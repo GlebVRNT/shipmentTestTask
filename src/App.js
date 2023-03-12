@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Navbar } from "./components/Navbar";
+import "./App.css";
+import Home from "./components/Home";
+import { Routes, Route, } from "react-router-dom";
+import Add from "./components/shipment/Add"
+import Edit from './components/shipment/Edit';
+import Shipments from "./components/shipment/Shipments";
 
-function App() {
+
+export const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        
+        <Route path="/add-shipment" element={<Add />} />
+        <Route path="/edit-shipment/:id" element={<Edit/>} />
+        <Route path="/shipment/:orderNo" element={<Shipments/>} />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;
